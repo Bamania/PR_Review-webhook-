@@ -19,9 +19,9 @@ export const authOptions = {
         setCookie('accessToken', account.access_token);
       
         token.accessToken = account.access_token;
-        console.log("token AT", token);
-        console.log("account AT->", account);
-        console.log("profile AT->", profile);
+        // console.log("token AT", token);
+        // console.log("account AT->", account);
+        // console.log("profile AT->", profile);
       }
       return token; // token.accessToken contains the GitHub token
     },

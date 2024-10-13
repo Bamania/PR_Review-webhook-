@@ -2,10 +2,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Mistral } from '@mistralai/mistralai';
 import { Octokit } from 'octokit';
 import { getServerSession } from 'next-auth';
-const apiKey = process.env.MISTRAL_API_KEY || "n5L7SLv5DjRstk432ZjkBLWB0ttQpGdz";  
+const apiKey = process.env.MISTRAL_API_KEY 
 const github_token = process.env.GITHUB_TOKEN 
 const client = new Mistral({ apiKey: apiKey });
-
+console.log(process.env.GITHUB_ID);
+console.log(process.env.GITHUB_SECRET);
 
 async function reviewPr(prContent: string) {
   try {
