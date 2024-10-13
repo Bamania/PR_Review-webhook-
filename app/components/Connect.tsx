@@ -1,19 +1,53 @@
-// /app/dashboard/page.tsx
+
 "use client";
 
 import { useSession, signOut, signIn } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+
 
 export default function Connect() {
+
+  
+  
   const { data: session } = useSession();
   console.log("session from the useSession",session);
-  // console.log("session data from the useSession",session?.user);
+
+  // useEffect(() => {
+  //   //@ts-ignore
+  //   if (session?.accessToken) {
+      
+     
+  //     fetch('http://localhost:3000/api/webHandle', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //         //@ts-ignore
+  //       body: JSON.stringify({ token:session.accessToken,}),
+  //     });
+  //   }
+  // }, [session]);
+
   const [repoName, setRepoName] = useState("");
   const [ownerName, setOwnerName] = useState("");
 
+//   const handleWebhookSetup=()=>{
+// alert("copy the url given below and add it in your webhook setup in the github ,URL-http://localhost:3000/api/webHandle");
+
+//   }
   const handleWebhookSetup = () => {
     if (repoName && ownerName) {
       // Handle webhook setup logic here
+      fetch('http://localhost:3000/api/webHandle', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+          //@ts-ignore
+        body: JSON.stringify({ token:session.accessToken,reponame:repoName,ownername:ownerName}),
+      });
+      alert("now go and add the webhook url in the github ,URL-http://localhost:3000/api/webHandle");
       console.log("Repository Name:", repoName);
       console.log("Owner Name:", ownerName);
       // Add the webhook setup logic here or trigger an API request to your backend
@@ -41,7 +75,7 @@ export default function Connect() {
     <div className="flex flex-col items-center justify-center min-h-screen">
       <h1></h1>
       <h1 className="text-xl">Welcome {session.user?.name}</h1>
-
+  
       <div className="mt-4">
         <h2 className="text-lg font-semibold mb-2">
           Set up a Webhook for Pull Requests:
@@ -53,7 +87,7 @@ export default function Connect() {
             value={repoName}
             onChange={(e) => setRepoName(e.target.value)}
             placeholder="Enter repository name"
-            className="border border-gray-300 p-2 rounded w-full"
+            className="border border-gray-300 p-2 rounded  text-black w-full"
           />
         </label>
 
@@ -64,7 +98,7 @@ export default function Connect() {
             value={ownerName}
             onChange={(e) => setOwnerName(e.target.value)}
             placeholder="Enter owner name"
-            className="border border-gray-300 p-2 rounded w-full"
+            className="border border-gray-300 text-black p-2 rounded w-full"
           />
         </label>
 

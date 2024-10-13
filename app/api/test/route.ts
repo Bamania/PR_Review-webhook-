@@ -1,21 +1,19 @@
-// /app/api/some-secure-route/route.ts
+import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
 
+
+
 export async function GET(request: Request) {
-  const session = await getServerSession(authOptions);
-
-  if (!session || !session.accessToken) {
-    return new Response(JSON.stringify({ error: "Not authenticated" }), {
-      status: 401,
-    });
+  //@ts-ignore
+  const session = await getServerSession(authOptions)
+ 
+  console.log("Session from GET request:", session);
+  //@ts-ignore
+  console.log("Session->",session);
+  if (!session) {
+    return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
   }
-
-  const accessToken = session.accessToken;  // Get OAuth token
-
-  // Use the accessToken to make further API calls
-
-  return new Response(JSON.stringify({ success: true, accessToken }), {
-    status: 200,
-  });
+  console.log("session authorized")
+  return NextResponse.json({ message: session });
 }
