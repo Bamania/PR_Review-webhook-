@@ -3,7 +3,7 @@ import { Mistral } from '@mistralai/mistralai';
 import { Octokit } from 'octokit';
 import { getServerSession } from 'next-auth';
 const apiKey = process.env.MISTRAL_API_KEY || "n5L7SLv5DjRstk432ZjkBLWB0ttQpGdz";  
-const github_token = process.env.GITHUB_TOKEN ||"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"
+const github_token = process.env.GITHUB_TOKEN 
 const client = new Mistral({ apiKey: apiKey });
 
 
