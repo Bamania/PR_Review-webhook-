@@ -47,10 +47,10 @@ export default function Connect() {
           //@ts-ignore
         body: JSON.stringify({ token:session.accessToken,reponame:repoName,ownername:ownerName}),
       });
-      alert("now go and add the webhook url in the github ,URL-http://localhost:3000/api/webHandle");
+      alert("Now add the webhook ,and pls open the tunnel to port 3000 using ngrok first then copy the respected url with the /api/webHandle endpoint, eg-URL-http://Your_ngrok_url/api/webHandle");
       console.log("Repository Name:", repoName);
       console.log("Owner Name:", ownerName);
-      // Add the webhook setup logic here or trigger an API request to your backend
+      
     } else {
       alert("Please fill in both the repository name and owner name.");
     }

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { Mistral } from '@mistralai/mistralai';
 import { Octokit } from 'octokit';
 
-// Use variables to simulate persistence
+
 let count = 0;
 let savedToken = '';
 let savedRepoName = '';
@@ -11,8 +11,6 @@ let savedOwnerName = '';
 const apiKey = process.env.MISTRAL_API_KEY;
 const client = new Mistral({ apiKey: apiKey });
 
-console.log(process.env.GITHUB_ID);
-console.log(process.env.GITHUB_SECRET);
 
 async function reviewPr(prContent: string) {
   try {
@@ -28,7 +26,7 @@ async function reviewPr(prContent: string) {
 }
 
 export async function POST(req: NextRequest) {
-  // Parse the JSON request body
+  
   const body = await req.json();
   let { token, reponame, ownername } = body;
 
@@ -41,7 +39,7 @@ export async function POST(req: NextRequest) {
   console.log("token-->", token);
   console.log("Endpoint POST triggered");
 
-  // Return an error if no valid token, repo, or owner are available
+  
   if (!token || !reponame || !ownername) {
     return NextResponse.json({ error: 'Missing required parameters (token, reponame, ownername)' }, { status: 400 });
   }
@@ -65,7 +63,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ message: 'First API call skipped. Count is now 1.', count });
   }
 
-  // On all subsequent requests, proceed with the try block
+  
   try {
     // Fetch all open pull requests from the repository
     const pullRequests = await octokit.request(`GET /repos/${ownername}/${reponame}/pulls`, {

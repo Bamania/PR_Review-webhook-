@@ -7,8 +7,10 @@ export const authOptions = {
   providers: [
     GithubProvider({
       clientId: process.env.GITHUB_ID!,
-      clientSecret: process.env.GITHUB_SECRET!,authorization: {
-        params: { scope: "repo" }
+      clientSecret: process.env.GITHUB_SECRET!,
+      authorization: {
+        params: {
+           scope: "repo write:discussion" }
       }
     }),
   ],
@@ -34,9 +36,9 @@ export const authOptions = {
       session.user.id = token.id;
       return session;
     },
-    secret: process.env.NEXTAUTH_SECRET,
-   
+    
   },
+  secret: process.env.NEXTAUTH_SECRET
 };
 
 
