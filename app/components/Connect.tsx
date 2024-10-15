@@ -61,7 +61,7 @@ export default function Connect() {
   if (!session) {
     return (
       <div className="flex flex-col items-center justify-center min-h-screen">
-        <h1 className="text-xl">You are not signed in</h1>
+        <h1 className="text-xl">You are not Signed in</h1>
         <button
           className="bg-black text-white p-4 rounded"
           onClick={() => signIn()}
