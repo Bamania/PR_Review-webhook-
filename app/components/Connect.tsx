@@ -14,7 +14,7 @@ export default function Connect() {
   console.log("session from the useSession",session);
 
   // useEffect(() => {
-  //   //@ts-ignore
+  
   //   if (session?.accessToken) {
       
      
@@ -44,7 +44,8 @@ export default function Connect() {
         headers: {
           'Content-Type': 'application/json',
         },
-          //@ts-ignore
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
         body: JSON.stringify({ token:session.accessToken,reponame:repoName,ownername:ownerName}),
       });
       alert("Now add the webhook ,and pls open the tunnel to port 3000 using ngrok first then copy the respected url with the /api/webHandle endpoint, eg-URL-http://Your_ngrok_url/api/webHandle");
