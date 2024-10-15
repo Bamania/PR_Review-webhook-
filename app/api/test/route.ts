@@ -4,12 +4,14 @@ import { authOptions } from "../auth/[...nextauth]/route";
 
 
 
-export async function GET(request: Request) {
-  //@ts-ignore
+export async function GET() {
+ // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
   const session = await getServerSession(authOptions)
  
   console.log("Session from GET request:", session);
-  //@ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
   console.log("Session->",session);
   if (!session) {
     return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });

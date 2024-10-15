@@ -1,9 +1,9 @@
-import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+
 import { headers } from "next/headers";
 
 export default async function ssrpage(){
-//@ts-ignore
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const result=await fetch("http://localhost:3000/api/test",{
     method: "GET",
     headers: headers()

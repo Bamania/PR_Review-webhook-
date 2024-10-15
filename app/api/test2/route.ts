@@ -1,12 +1,12 @@
-import { headers } from "next/headers";
-import { NextRequest, NextResponse } from "next/server";
+
+import {  NextResponse } from "next/server";
 
 import getdetails from "../../important"
 
 
 
 
-export async function GET(req: NextRequest, res: NextResponse){
+export async function GET(){
     const data=getdetails();
     return NextResponse.json({result:data})
 }

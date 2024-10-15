@@ -15,8 +15,10 @@ export const authOptions = {
     }),
   ],
 
-  callbacks: { //@ts-ignore
-    async jwt({ token, account, profile }) {
+  callbacks: { 
+   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
+    async jwt({ token, account }) {
       console.log("authorized")
       
       if (account) {
@@ -29,7 +31,8 @@ export const authOptions = {
       }
       return token; // token.accessToken contains the GitHub token
     },
-    //@ts-ignore
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
     async session({ session, token }) {
   
       session.accessToken = token.accessToken;
@@ -43,7 +46,8 @@ export const authOptions = {
 
 
 
- //@ts-ignore
+ // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
