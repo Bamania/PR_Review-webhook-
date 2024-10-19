@@ -13,7 +13,7 @@ export const authOptions: NextAuthOptions = {
         }
       }),
     ],
-  
+    secret: process.env.SECRET,
     callbacks: { 
      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
@@ -42,7 +42,7 @@ export const authOptions: NextAuthOptions = {
         return session;
       },
       
-    },
-    secret: process.env.NEXTAUTH_SECRET
+    }
+  
   };
   
