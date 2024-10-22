@@ -49,7 +49,7 @@ export default function Connect() {
         body: JSON.stringify({ token:session.accessToken,reponame:repoName,ownername:ownerName}),
       });
       const currentUrl = window.location.href;
-      alert(`now add this url ${currentUrl}/api/webHandle as a webHook to your given repo`);
+      alert(`now add this url ${currentUrl}api/webHandle as a webHook to your given repo`);
       console.log("Repository Name:", repoName);
       console.log("Owner Name:", ownerName);
       
